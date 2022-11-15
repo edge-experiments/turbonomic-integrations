@@ -1,0 +1,16 @@
+apiVersion: turbonomic.io/v1alpha1
+kind: ChangeRequest
+metadata:
+  name: changerequest-TIMESTAMP
+spec:
+  type: GitHub
+  source: https://github.com/edge-experiments/gitops-source
+  path: turbonomic/scheduling/placements.yaml
+  branch: main
+  patchItems:
+  - op: replace
+    path: /spec/locationSelectors/0/matchLabels/aisle
+    value: "AISLE"
+  secretRef:
+    name: github-token
+
